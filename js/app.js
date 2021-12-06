@@ -236,9 +236,17 @@ class Store {
                         // if qty is > 0(item is added to cart)
                         if (item.qty >1) {
                             let qtyInput=document.querySelectorAll('.qty-input-value');
+                            let itemSubtotal=document.querySelectorAll('.item-subtotal')
                             qtyInput.forEach((element)=>{
-                                if(element.dataset['id']==item.id)
-                                element.innerText=`${item.qty}`
+                                if(element.dataset['id']==item.id){
+                                    element.innerText=`${item.qty}`
+                                }
+                            })
+
+                            itemSubtotal.forEach((el)=>{
+                                if(el.dataset['id']==item.id){
+                                    el.innerText=`${subTimeQty}`
+                                }
                             })
                         }
                         else{
@@ -262,7 +270,7 @@ class Store {
                             <div id="itemQuantity">
                             <p class="text-center qty-input-value" id="qtyInput" data-id="${item.id}">${item.qty}</p>
                             </td>
-                            <td id="itemSubtotal>${subTimeQty}</td>"`
+                            <td class="item-subtotal" id="itemSubtotal" data-id="${item.id}">${subTimeQty}</td>`
 
                             table.append(tableRow);
                         }
